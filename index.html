@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Betusile Mcinga | Official Artist Experience</title>
+    <link rel="icon" type="image/png" href="betusile.png">
+	
+	<meta name="description" content="Official website for Betusile Mcinga. Get the latest tour dates, music releases, and booking information.">
+    <meta name="keywords" content="Betusile Mcinga, Bethusile, Betusile, Gospel Music, South African Gospel, Artist, Gig Guide, Nduna Records">
+	
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;500;800&family=Instrument+Serif:ital@0;1&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg: #000000;
+            --surface: #0a0a0a;
+            --accent: #ffffff;
+            --text-main: #ffffff;
+            --text-dim: rgba(255, 255, 255, 0.6);
+            --radius-btn: 100px;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Smooth scroll for the whole page */
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .wrapper { display: grid; grid-template-columns: 1fr 1.1fr; height: 100vh; width: 100vw; }
+
+        .visual-hero {
+            position: sticky; top: 0; height: 100vh;
+            background: url('hero.jpg') center/cover no-repeat; 
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .visual-hero::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, #000);
+        }
+
+        .floating-label { position: absolute; bottom: 60px; left: 40px; z-index: 10; }
+        .floating-label .cursive-name {
+            font-family: 'Pinyon Script', cursive; font-size: 8rem;
+            display: block; margin-bottom: -40px; margin-left: -10px; font-weight: 400;
+        }
+
+        .floating-label .surname {
+            font-family: 'Instrument Serif', serif; font-size: 6rem;
+            text-transform: uppercase; letter-spacing: -2px; display: block;
+        }
+
+        .scroll-content { padding: 80px 12%; overflow-y: auto; scroll-behavior: smooth; position: relative; z-index: 1; }
+
+        .bio-section { position: relative; margin-bottom: 80px; }
+        
+        .watermark-text {
+            position: absolute; top: -30px; left: -20px; font-size: 11rem; font-weight: 800;
+            color: rgba(255,255,255,0.06); z-index: -1; letter-spacing: -5px; 
+            pointer-events: none; user-select: none;
+        }
+
+        .section-tag {
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 4px;
+            color: var(--text-dim); margin-bottom: 25px; display: block;
+        }
+
+        .bio-text { font-size: 1.1rem; line-height: 1.9; font-weight: 300; color: var(--text-dim); }
+
+        .spotlight-area { margin-bottom: 60px; }
+
+        .gig-item {
+            display: flex; align-items: center; padding: 25px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1); gap: 30px;
+        }
+        .date-box { text-align: center; min-width: 60px; }
+        .date-box .day { font-size: 1.8rem; font-weight: 800; display: block; }
+        .date-box .month { font-size: 0.7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 2px; }
+
+        .nav-links { display: flex; flex-direction: column; gap: 15px; margin-bottom: 80px; }
+        .nav-btn {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 24px 40px; 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-btn); color: var(--text-main); text-decoration: none;
+            font-weight: 500; transition: var(--transition);
+        }
+        .nav-btn:hover { 
+            background: rgba(255, 255, 255, 0.1); 
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .booking-card { 
+            background: var(--accent); color: #000; 
+            padding: 60px; border-radius: 40px; text-align: center; 
+            position: relative; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(255,255,255,0.1);
+        }
+        
+        /* Animation for Scroll Arrow */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-3px); }
+        }
+
+        .booking-card h2 { font-family: 'Instrument Serif', serif; font-size: 3.5rem; margin-bottom: 10px; position: relative; }
+        .contact-link { display: block; font-size: 1.4rem; font-weight: 800; text-decoration: none; color: #000; margin-top: 15px; position: relative; }
+
+        .ticket-btn-sample {
+            border: 1px solid #fff; color: #fff; padding: 10px 22px; 
+            border-radius: 50px; text-decoration: none; font-size: 0.7rem; 
+            font-weight: 700; text-transform: uppercase; transition: 0.4s ease;
+        }
+        .ticket-btn-sample:hover { background: #fff; color: #000; }
+
+        @media (max-width: 1024px) {
+            .wrapper { grid-template-columns: 1fr; height: auto; }
+            .visual-hero { height: 70vh; position: relative; }
+            .floating-label .cursive-name { font-size: 5rem; margin-bottom: -20px; }
+            .floating-label .surname { font-size: 3.5rem; }
+            .watermark-text { font-size: 6rem; top: -20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <section class="visual-hero">
+        <div class="floating-label">
+            <span class="section-tag" style="color: #fff; opacity: 0.8;">Recording Artist</span>
+            <span class="cursive-name">Betusile</span>
+            <span class="surname">Mcinga</span>
+        </div>
+    </section>
+
+    <main class="scroll-content">
+        <section class="bio-section" id="bio">
+            <div class="watermark-text">BIO</div>
+            <span class="section-tag">The Story</span>
+            <p class="bio-text" style="font-size: 1rem; line-height: 1.7;">
+               Born in Willowvale and raised in Mthatha, Betusile Mcinga is a true son of the Eastern Cape who was shaped by the iconic musical legacy of his mother, the multi-award-winning Gospel artist Lusanda Mcinga. From his early days as a keyboardist and backing vocalist in the Lusanda Spiritual Group to becoming a multi-award-winning solo powerhouse himself, his journey is defined by both grace and excellence<br><br>
+    
+    With platinum-selling hits like <em>'Ndiyanqophisa'</em> and <em>'Kuphelele'</em>, Betusile has evolved into an independent industry leader. Beyond the music, his heart remains with the community; constantly giving back to the schools and orphans of his home province through his foundation.<br><br>
+           
+<strong>Ndingu Betusile Mcinga. Thank you for stopping by!<br> Take a look around, enjoy the music, connect with me and let’s keep the faith.</strong>
+		   </p>
+
+            <div style="margin-top: 40px; opacity: 0.5;">
+                <a href="#music" style="color: #fff; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px;">
+                    <span>Scroll for More</span>
+                    <i class="fas fa-chevron-down" style="animation: bounce 2s infinite;"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="spotlight-area" id="music">
+            <span class="section-tag">Popular releases on Spotify</span>
+           <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/6xJ0Ui6xanSrQyadnCOpFU?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </section>
+
+       <section class="gig-list">
+            <span class="section-tag">Gig Guide</span>
+            <div id="dynamic-gigs">
+                <div class="gig-item">
+                    <div class="date-box">
+                        <span class="day">28</span>
+                        <span class="month">MAR</span>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <strong style="font-size: 1.1rem; display: block; margin-bottom: 4px;">Gospel Explosion Live</strong>
+                        <small style="color:rgba(255,255,255,0.5); font-weight: 300;">Moreleta Park, Pretoria</small>
+                    </div>
+                    <div class="action-area">
+                        <a href="#" class="ticket-btn-sample">Tickets</a>
+                    </div>
+                </div>
+
+                <div class="gig-item">
+                    <div class="date-box">
+                        <span class="day">04</span>
+                        <span class="month">APR</span>
+                    </div>
+                    <div style="flex-grow: 1;">
+                        <strong style="font-size: 1.1rem; display: block; margin-bottom: 4px;">Zion Festival</strong>
+                        <small style="color:rgba(255,255,255,0.5); font-weight: 300;">ICC East London</small>
+                    </div>
+                    <div class="action-area">
+                        <span style="opacity:0.4; font-size:0.7rem; text-transform:uppercase; font-weight: 700;">Sold Out</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br>
+        <section class="nav-links" style="margin-bottom: 40px;">
+            <span class="section-tag">Listen & Follow</span>
+            <a href="https://open.spotify.com/artist/6xJ0Ui6xanSrQyadnCOpFU?si=DRx2vZJbSzKBXlRJBevxWQ" target="_blank" class="nav-btn">
+                <span>Spotify Music</span>
+                <i class="fab fa-spotify"></i>
+            </a>
+            <a href="https://music.apple.com/za/artist/betusile/898755225" target="_blank" class="nav-btn">
+                <span>Apple Music</span>
+                <i class="fab fa-apple"></i>
+            </a>
+            <a href="https://www.youtube.com/@betusile" target="_blank" class="nav-btn">
+                <span>YouTube Channel</span>
+                <i class="fab fa-youtube"></i>
+            </a>
+        </section>
+
+        <section class="nav-links" style="margin-bottom: 80px;">
+            <span class="section-tag">Connect</span>
+            <a href="https://www.facebook.com/betusile.mcinga/" target="_blank" class="nav-btn">
+                <span>Facebook Official</span>
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/betusile/" target="_blank" class="nav-btn">
+                <span>Instagram</span>
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.tiktok.com/@betusile" target="_blank" class="nav-btn">
+                <span>TikTok</span>
+                <i class="fab fa-tiktok"></i>
+            </a>
+        </section>
+
+        <section class="booking-card">
+            <span class="section-tag" style="color: #444;">Inquiries</span>
+            <h2>Bookings</h2>
+            <p style="opacity: 0.7; font-size: 0.9rem; font-weight: 500;">For live performances and ministry</p>
+            <a href="tel:+27767865514" class="contact-link">+27 76 786 5514</a>
+            <a href="mailto:bookings@betusile.co.za" class="contact-link">bookings@betusile.co.za</a>
+        </section>
+
+        <footer style="margin-top: 80px; text-align: center; padding-bottom: 40px;">
+            <p style="font-size: 0.6rem; opacity: 0.4; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px;">Nduna Records © 2026</p>
+            <p style="font-size: 0.55rem; opacity: 0.3; letter-spacing: 1px;">
+                Platform by <a href="https://luliboconsult.co.za" target="_blank" style="color: inherit; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.1); font-weight: 800;">Lulibo Consult</a>
+            </p>
+        </footer>
+    </main>
+	
+	<script>
+    /* RESTORED SCRIPT - DO NOT CHANGE */
+    const SHEET_ID = '1w9lzy9Fgp5bhADb39uRMLTa2Kkr0T6b13Osb2-FPFI8';
+    const GIG_SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Sheet1`;
+
+    async function fetchGigs() {
+        try {
+            const response = await fetch(GIG_SHEET_URL);
+            if (!response.ok) return; 
+            
+            const csvText = await response.text();
+            const rows = csvText.split('\n').slice(1).filter(row => row.trim() !== ''); 
+            
+            if (rows.length > 0) {
+                let html = '';
+                rows.forEach(row => {
+                    const cols = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+                    if (!cols || cols.length < 2) return;
+                    const clean = (val) => val ? val.replace(/^"|"$/g, '').trim() : '';
+                    const [day, month, title, venue, link, status] = cols.map(clean);
+                    html += `
+                        <div class="gig-item">
+                            <div class="date-box"><span class="day">${day}</span><span class="month">${month}</span></div>
+                            <div style="flex-grow: 1;"><strong>${title}</strong><br><small>${venue}</small></div>
+                            <div class="action-area">
+                                ${status.toLowerCase() === 'sold out' ? '<span style="opacity:0.4; font-size:0.7rem; text-transform:uppercase; font-weight:700;">Sold Out</span>' : `<a href="${link}" class="ticket-btn-sample">Tickets</a>`}
+                            </div>
+                        </div>`;
+                });
+                document.getElementById('dynamic-gigs').innerHTML = html;
+            }
+        } catch (e) { console.log("Silent fallback to sample data."); }
+    }
+    fetchGigs(); // Re-activated
+</script>
+	
+</div>
+</body>
+</html>
